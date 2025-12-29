@@ -410,5 +410,50 @@ html {
     text-decoration: none;
     color: white;
 }
+.aboutNeuro {
+    width: 100%;
+    /* Utilise min-height au lieu de height pour que la boîte s'agrandisse avec le texte */
+    min-height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 5%; /* Espace pour le header et les bords */
+    background-color: #222831;
+    overflow: hidden;
+}
 
+/* Conteneur interne pour gérer le responsive */
+.aboutNeuro .container {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur mobile */
+    align-items: center;
+    gap: 30px;
+}
+
+/* --- AJUSTEMENT MOBILE SPÉCIFIQUE --- */
+@media (max-width: 768px) {
+    .aboutNeuro {
+        padding-top: 100px; /* Plus d'espace en haut pour ne pas être caché par le header */
+        height: auto; /* Force la hauteur automatique sur téléphone */
+        display: block; /* Change le mode d'affichage pour plus de fluidité */
+    }
+
+    .aboutNeuro .textTitle {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .aboutNeuro h2 {
+        font-size: 1.8rem; /* Réduit la taille du titre pour mobile */
+        word-wrap: break-word; /* Coupe les mots s'ils sont trop longs */
+    }
+
+    .aboutNeuro p {
+        font-size: 1rem;
+        line-height: 1.6;
+        text-align: left; /* Plus facile à lire sur petit écran */
+        margin-bottom: 20px;
+    }
+}
    
+
