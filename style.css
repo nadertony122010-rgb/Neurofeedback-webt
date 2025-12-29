@@ -1,5 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+/* --- ADAPTATION POUR TOUS LES APPAREILS (Mobiles et Tablettes) --- */
+@media (max-width: 992px) {
+    /* Sur tablette et mobile, on passe de 2 colonnes à 1 seule colonne */
+    .hero, .tech-container, .ai-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 5%;
+    }
 
+    .hero-image img, .tech-image img {
+        width: 80%; /* Réduit la taille des images pour qu'elles ne dépassent pas */
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Spécifique pour les téléphones portables */
+    header {
+        padding: 10px 15px; /* On réduit encore le header sur téléphone */
+    }
+
+    .navigation ul {
+        gap: 10px; /* On serre les liens du menu pour qu'ils tiennent */
+    }
+
+    .navigation a {
+        font-size: 0.75rem; /* On diminue la taille du texte du menu */
+    }
+
+    .name {
+        font-size: 2.5rem; /* On réduit le titre principal pour éviter qu'il soit coupé */
+    }
+
+    .feature-box {
+        flex-direction: column; /* Les icônes passent au-dessus du texte */
+        align-items: center;
+    }
+}
 * {
     margin: 0;
     padding: 0;
@@ -373,4 +410,5 @@ html {
     text-decoration: none;
     color: white;
 }
+
    
