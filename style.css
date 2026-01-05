@@ -1,143 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-/* --- ADAPTATION POUR TOUS LES APPAREILS (Mobiles et Tablettes) --- */
-@media (max-width: 992px) {
-    /* Sur tablette et mobile, on passe de 2 colonnes à 1 seule colonne */
-    .hero, .tech-container, .ai-content {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem 5%;
-    }
-
-    .hero-image img, .tech-image img {
-        width: 80%; /* Réduit la taille des images pour qu'elles ne dépassent pas */
-        margin-top: 2rem;
-    }
-}
-
-@media (max-width: 600px) {
-    /* Spécifique pour les téléphones portables */
-    header {
-        padding: 10px 15px; /* On réduit encore le header sur téléphone */
-    }
-
-    .navigation ul {
-        gap: 10px; /* On serre les liens du menu pour qu'ils tiennent */
-    }
-
-    .navigation a {
-        font-size: 0.75rem; /* On diminue la taille du texte du menu */
-    }
-
-    .name {
-        font-size: 2.5rem; /* On réduit le titre principal pour éviter qu'il soit coupé */
-    }
-
-    .feature-box {
-        flex-direction: column; /* Les icônes passent au-dessus du texte */
-        align-items: center;
-    }
-}
+/* --- RESET & GLOBAL --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
     font-family: "Poppins", sans-serif;
-}
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: #222831; /* Important pour cacher le texte qui passe dessous */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-section[id] {
-    /* Ajuste la valeur (80px, 100px...) selon la hauteur de ton header */
-    scroll-margin-top: 150px;
 }
 
 html {
     scroll-behavior: smooth;
-    /* Indique au navigateur la hauteur exacte de ton nouveau header réduit */
-    scroll-padding-top: 100px; 
-}
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* On réduit le padding : 0.8rem en haut/bas au lieu de 2rem */
-    padding: 0.8rem 5%; 
-    max-width: 1400px;
-    margin: 0 auto;
-    
-    /* On le fixe en haut pour qu'il ne bouge pas */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: rgba(34, 40, 49, 0.95); /* Effet légèrement transparent */
-    backdrop-filter: blur(5px); /* Flou derrière le menu */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-    /* On utilise 100% de la largeur */
-    width: 100%; 
-    max-width: none; /* On retire toute limite de largeur */
-    
-    /* Espace sur les côtés pour que le logo et le menu ne touchent pas physiquement les bords */
-    padding: 0.8rem 40px; 
-    
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: rgba(34, 40, 49, 0.95);
-    backdrop-filter: blur(5px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* S'assurer que le body n'a pas de marges parasites */
-body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Évite un scroll horizontal bizarre */
-}
-
-.logo:hover {
-    transform: scale(1.05);
-}
-
-.navigation ul {
-    display: flex;
-    list-style-type: none;
-    gap: 2rem;
-    margin: 0;
-}
-
-.navigation a {
-    text-decoration: none;
-    color: #eeeeee;
-    font-size: 0.95rem; /* Texte légèrement plus petit */
-    font-weight: 500;
+    scroll-padding-top: 100px;
 }
 
 body {
-    background-color: #222831;   
+    background-color: #000;
     color: #eeeeee;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* --- HEADER --- */
+/* --- HEADER / NAVIGATION --- */
 header {
+    position: fixed; /* Reste en haut lors du scroll */
+    top: 0;
+    left: 0;
+    width: 100%; /* S'étend sur toute la largeur */
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgb(0, 255, 217);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgb(0, 255, 217);
+}
+
+.header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    height: 50px;
+    transition: transform 0.3s;
 }
 
 .navigation ul {
@@ -148,312 +54,374 @@ header {
 
 .navigation a {
     text-decoration: none;
-    color: #eeeeee;
-    font-weight: 500;
+    color: #00abd5;
+    font-size: 0.95rem;
+    font-weight: 700;
     transition: 0.3s;
 }
 
-.navigation a:hover { color: #00abd5; }
+.navigation a:hover {
+    color: #59ffa9;
+}
 
-/* --- HERO --- */
+/* --- HERO SECTION --- */
 .hero {
-    display: flex;
-    justify-content: space-between;
+    position: relative;
+    display: flex; 
+    justify-content: space-between; 
     align-items: center;
-    min-height: 80vh;
-    padding: 0 5%;
-    max-width: 1200px;
+    min-height: 100vh; 
+    padding: 100px 5% 50px; 
+    max-width: 1200px; 
     margin: 0 auto;
 }
+/* Petit effet de fond technologique */
+.hero-background-overlay {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    
+    z-index: -1;
+}
+.herosub { 
+    flex: 1.2; 
+    z-index: 2; 
+}
+.name { 
+    font-size: clamp(3rem, 6vw, 4.5rem); 
+    line-height: 1.1; 
+    margin-bottom: 10px; 
+    color: rgb(212, 175, 55);
+}
 
-.name { font-size: 3.5rem; color: #d2b48c; }
-.title { font-size: 2rem; color: #7cfc00; margin-bottom: 2rem; }
+.title { 
+    font-size: 1.8rem; 
+    color: #105a31; 
+    margin-bottom: 2rem; 
+    font-weight: 400; 
+}
+.hero-description { 
+    color: #aaa; 
+    margin-bottom: 2.5rem;
+    max-width: 500px; 
+    font-size: 1.1rem; 
+}
 
-.heroBtns {
-    display: flex;
-    gap: 1rem; 
+.heroBtns { 
+    display: flex; 
+    gap: 1.5rem; 
+    flex-wrap: wrap; 
 }
 .Allaboutit {
-    background: #00abd5;
-    padding: 0.8rem 2rem;
-    border-radius: 30px;
+    background: #3eadd991; 
+    padding: 1rem 2.5rem; 
+    border-radius: 50px;
+    text-decoration: none; 
+    color: rgb(0, 0, 0); 
+    font-weight: 600; 
+    transition: 0.3s;
+    box-shadow: 0 5px 5px rgba(255, 255, 255, 0.409);
+}
+.Allaboutit:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 10px 10px rgba(53, 89, 220, 0.447); 
+}
+
+.everything {
+    display: flex; 
+    align-items: center; 
+    border: 2px solid #dfdfdf;
+    padding: 1rem 2.5rem; 
+    border-radius: 50px; 
     text-decoration: none;
-    color: white;
+    color: #00abd5; 
+    font-weight: 600; 
+    transition: 0.3s;
+}
+.everything:hover { background: rgba(0, 0, 0, 0.1); }
+
+.hero-img-container {
+    flex: 1; 
+    position: relative; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+.glow-effect {
+    position: absolute; width: 1000px; height: 1000px;
+    background: radial-gradient(circle, rgba(0, 171, 213, 0.2) 0%, transparent 70%);
+    z-index: 0; 
+    animation: pulse 4s infinite alternate;
+}
+.center-image {
+    max-width: 100%; z-index: 1; animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(0, 171, 213, 0.2));
 }
 
-.center-image { max-width: 50%; animation: float 4s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+@keyframes pulse { 0% { transform: scale(0.9); opacity: 10; } 100% { transform: scale(1.2); opacity: 1; } }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+/* --- ABOUT SECTION --- */
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 6rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 4rem;
+    background-color: rgb(28, 65, 114);
 }
 
-/* --- SECTION ONDES (WAVES) --- */
+.other1 {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.textContainer { flex: 1; min-width: 300px; }
+
+.aboutName { 
+    font-size: 2.5rem; 
+    color: #02ffb3; 
+    font-weight:500; 
+}
+.aboutTitle { 
+    font-size: 3.5rem; 
+    color: #ed5f5f; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+}
+.aboutNeuro { 
+    color: #cbd5e0; 
+    margin-top: 2rem; 
+    text-align: justify;
+    font-weight: 400; 
+}
+
+/* --- WAVES SECTION --- */
 .waves-section {
     padding: 5rem 5%;
-    background-color: #1a1e24;
+    background-color: #0000009d;
 }
 
-.title-container { text-align: center; margin-bottom: 4rem; }
+.title-container { 
+    text-align: center; 
+    margin-bottom: 4rem; 
+}
+.section-subtitle { 
+    color: #00ff00; 
+    text-transform: uppercase; 
+    letter-spacing: px; 
+}
+.section-title { font-size: 2.5rem; 
+    margin-top: 0.5rem; 
+    color: #b5d500;
+}
 
 .waves-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #b8a016;
+    
 }
 
 .wave-card {
     padding: 2rem;
     border-radius: 15px;
-    background: #393e46;
+    background: #006cba44;
     text-align: center;
     transition: 0.3s;
-    border-bottom: 5px solid transparent;
+    border-bottom: 10px solid transparent;
+
 }
 
-.wave-card:hover { transform: scale(1.05); }
-
-/* Couleurs par ondes */
+.wave-card:hover { 
+    transform: translateY(-10px);
+    box-shadow: 5px 10px 10px 5px  rgba(185, 176, 19, 0.403); 
+}
 .delta { border-color: #ff4d4d; }
-.theta { border-color: #ffa500; }
+.theta { border-color: #00ffff; }
 .alpha { border-color: #ffff00; }
 .beta { border-color: #00ff00; }
-.gamma { border-color: #9932cc; }
+.gamma { border-color: #3263cc; }
+.wave-card a {
+    text-decoration: none;   /* supprime le soulignement */
+    color: #042dff;          /* bleu (vous pouvez changer la teinte) */
+    display: block;          /* rend tout le bloc cliquable proprement */
+}
+
+.wave-card a:hover {
+    color: #4dffac;          /* bleu plus clair au survol (optionnel) */
+}
+
 
 /* --- PROCESSING --- */
-.processing {
-    padding: 5rem 5%;
-    max-width: 1200px;
-    margin: 0 auto;
+.processing { 
+    padding: 5rem 5%; 
+    max-width: 1200px;  
+    margin: 0 auto; 
 }
-
-.content-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 4rem;
+.content-wrapper { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 5rem; 
+    align-items: center; 
 }
-
-.process-list {
-    list-style: none;
-    margin-top: 2rem;
+.process-list { 
+    list-style: none; 
+    margin-top: 5rem; 
 }
-
-.process-list li {
-    margin-bottom: 1.5rem;
-    padding-left: 1.5rem;
-    border-left: 3px solid #00abd5;
+.process-list li { 
+    margin-bottom: 1.5rem; 
+    padding-left: 1.5rem; 
+    border-left: 3px solid #49cd18; 
 }
 
 .ai-visual {
-    background: linear-gradient(45deg, #00abd5, #7cfc00);
+    flex: 1;
+    background: linear-gradient(50deg, #1cd500d4, #00b9fc);
     padding: 3rem;
     border-radius: 20px;
-    color: #222831;
+    color: #222;
     font-weight: bold;
     text-align: center;
+    box-shadow: 0px 20px 50px 0px  rgba(164, 164, 164, 0.491);
+}
+
+/* --- AI LOGIC --- */
+.ai-logic { 
+    padding: 5rem 5%; 
+    background: #021e0f; 
+}
+.ai-content { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 2rem; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+.ai-card { background: rgba(27, 37, 55, 0.5); 
+    padding: 2.5rem; 
+    border-radius: 20px; 
+    border: 5px solid rgba(213, 0, 0, 0.3); 
+    transition: 0.3s;
+    box-shadow: 1px 1px 10px 1px rgba(35, 255, 11, 0.969); 
+}
+.ai-card:hover { 
+    border-color: #00fcd6; 
+    transform: translateY(-10px);
 }
 
 /* --- CONTACT & FOOTER --- */
-.contact {
-    text-align: center;
-    padding: 5rem 5%;
-    background: #1a1e24;
-}
-
+.contact { text-align: center; padding: 5rem 5%; }
 .contact-btn {
     display: inline-block;
-    margin-top: 2rem;
-    padding: 1rem 3rem;
     background: #00abd5;
+    padding: 1rem 3rem;
+    border-radius: 50px;
     color: white;
     text-decoration: none;
-    border-radius: 50px;
+    font-weight: bold;
+    margin-top: 2rem;
+    transition: 0.3s;
 }
 
 footer {
     text-align: center;
-    padding: 2rem;
+    padding: 3rem;
+    background: #111;
+    border-top: 1px solid #333;
     font-size: 0.9rem;
-    opacity: 0.6;
-}
-
-/* --- MOBILE --- */
-@media (max-width: 768px) {
-    .hero, .content-wrapper, .about { flex-direction: column; text-align: center; }
-    .center-image { max-width: 90%; margin-top: 2rem; }
-    .name { font-size: 2.5rem; }
+    color: #888;
 }
 
 
-/* --- AI LOGIC SECTION --- */
-.ai-logic {
-    padding: 5rem 5%;
-    background: radial-gradient(circle at center, #2c3440 0%, #222831 100%);
+/* --- What is Ai SECTION --- */
+
+
+.whatisAI {
+    background-color: rgba(12, 22, 27, 0.9); /* Légèrement plus opaque pour la lisibilité */
+    padding: 4rem 5%;
+    color: #cbd5e0;
 }
 
-.ai-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+/* --- Conteneur Flexbox (C'est ici que la magie opère) --- */
+.ai-container {
     max-width: 1200px;
     margin: 0 auto;
+    display: flex; /* Active l'alignement côte à côte */
+    align-items: center; /* Centre verticalement */
+    justify-content: center;
+    gap: 4rem; /* Espace entre l'image et le texte */
+    flex-wrap: wrap; /* Permet de passer à la ligne sur petit écran */
 }
 
-.ai-card {
-    background: rgba(57, 62, 70, 0.5);
-    padding: 2.5rem;
+/* --- Image --- */
+.john-img {
+    width: 100%; /* S'adapte au conteneur */
+    max-width: 500px; /* Taille max */
+    height: auto;
     border-radius: 20px;
-    border: 1px solid rgba(0, 171, 213, 0.3);
-    text-align: left;
-    transition: all 0.4s ease;
-    backdrop-filter: blur(10px);
+    
+    transition: transform 0.3s ease; /* Petit effet au survol */
 }
 
-.ai-card:hover {
-    border-color: #7cfc00;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(124, 252, 0, 0.1);
+.john-img:hover {
+    transform: scale(1.02);
 }
 
-.ai-icon {
-    font-size: 3rem;
+/* --- Contenu Texte --- */
+.text-content {
+    flex: 1; /* Prend l'espace restant disponible */
+    min-width: 300px; /* Évite que le texte soit trop écrasé */
+}
+
+/* --- Titres --- */
+.titles-wrapper {
     margin-bottom: 1.5rem;
 }
 
-.ai-card h3 {
-    color: #00abd5;
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
+.subtitle { 
+    font-size: 2rem; 
+    color: #02ffb3; 
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.2;
 }
 
-.ai-card p {
-    font-size: 0.95rem;
-    color: #cccccc;
-    line-height: 1.6;
+.main-title { 
+    font-size: 3.5rem; 
+    color: #7eed5f; 
+    font-weight: 800; 
+    text-transform: uppercase; 
+    margin: 0;
+    line-height: 1;
+    text-shadow: 0 0 10px rgba(126, 237, 95, 0.3); /* Effet néon */
 }
 
-.logo{
-    max-width: 10%;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* Style spécifique pour le lien AI dans la nav pour le faire ressortir si besoin */
-.navigation a{
-    color: #7cfc00; /* Une couleur verte pour l'IA par exemple */
-    font-weight: bold;
-}
-
-.about{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 5rem auto;
-    max-width: 1200px;
-    gap: 2rem;
-}
-
-.textContainer{
-    display: flex;
-    flex-direction: column;
-}
-
-
-
-.textTitle{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 2rem;
-}
-
-
-
-.aboutName{
-    color: #eeeeee;
-    font-size: 35px;
-    gap: 5px;
-}
-
-
-
-.aboutTitle{
-    color: #00abd5;
-    font-size: 40px;
-}
-
-.aboutNeuro{
+/* --- Paragraphe --- */
+.description { 
+    font-size: 1.1rem;
+    line-height: 1.6; /* Meilleure lisibilité */
     text-align: justify;
-    color: rgb(61, 121, 81);
+    font-weight: 400; 
+    opacity: 0.9;
 }
 
-
-.other1{
-    max-width: 40%;
-   
-}
-.aboutNeuro{
-    font-size: 20px;
-}
-.next{
-    background: #00abd5;
-    padding: 0.8rem 2rem;
-    border-radius: 30px;
-    text-decoration: none;
-    color: white;
-    font-size: 30px;
-     background: #00abd5;
-    padding: 0.8rem 2rem;
-    border-radius: 30px;
-    text-decoration: none;
-    color: white;
-}
-.aboutNeuro {
-    width: 100%;
-    /* Utilise min-height au lieu de height pour que la boîte s'agrandisse avec le texte */
-    min-height: 100vh; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 80px 5%; /* Espace pour le header et les bords */
-    background-color: #222831;
-    overflow: hidden;
+.description strong {
+    color: #fff;
+    font-size: 1.2rem;
 }
 
-/* Conteneur interne pour gérer le responsive */
-.aboutNeuro .container {
-    display: flex;
-    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur mobile */
-    align-items: center;
-    gap: 30px;
+.description em {
+    color: #02ffb3;
+    font-style: normal;
 }
-
-/* --- AJUSTEMENT MOBILE SPÉCIFIQUE --- */
-@media (max-width: 768px) {
-    .aboutNeuro {
-        padding-top: 100px; /* Plus d'espace en haut pour ne pas être caché par le header */
-        height: auto; /* Force la hauteur automatique sur téléphone */
-        display: block; /* Change le mode d'affichage pour plus de fluidité */
-    }
-
-    .aboutNeuro .textTitle {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .aboutNeuro h2 {
-        font-size: 1.8rem; /* Réduit la taille du titre pour mobile */
-        word-wrap: break-word; /* Coupe les mots s'ils sont trop longs */
-    }
-
-    .aboutNeuro p {
-        font-size: 1rem;
-        line-height: 1.6;
-        text-align: left; /* Plus facile à lire sur petit écran */
-        margin-bottom: 20px;
-    }
-}
-   
-
